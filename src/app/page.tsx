@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, RefreshCcw } from "lucide-react";
 import zxcvbn from "zxcvbn";
 
 export default function PasswordGenerator() {
@@ -73,12 +73,15 @@ export default function PasswordGenerator() {
           Password Generator
         </h1>
 
-        <div className="mb-4">
+        <div className="mb-4 flex gap-x-2">
           <Input
             value={password}
             readOnly
             className="w-full text-center font-mono text-lg"
           />
+          <Button onClick={generatePassword} className="w-6">
+            <RefreshCcw className="h-4 w-4" />
+          </Button>
         </div>
 
         <div className="mb-4">
@@ -140,12 +143,8 @@ export default function PasswordGenerator() {
           </div>
         </div>
 
-        <Button onClick={generatePassword} className="w-full mt-6">
-          Generate New Password
-        </Button>
-
         <motion.div
-          className="w-full mt-2"
+          className="w-full mt-6"
           initial={false}
           animate={isCopied ? { scale: [1, 1.1, 1] } : {}}
         >
